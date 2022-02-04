@@ -7,13 +7,18 @@ import React, {useState} from 'react';
 //these will not be moved to an actions file, because this is for students who have not learned that part
 //of react yet !
 
+let initialState = {
+  x: 2,
+  y: 2
+}
+
 //increments:: state changers !
-const incrementX = function(state,x){ //each time this is called, logic goes 'hey,
+const incrementX = function(state){ //each time this is called, logic goes 'hey,
                                       //if x is 3, return our state, else increment x by 1'
-  if(x===3){
-    return state;
+  if(state[x]===3){
+    return state; //will ahve to review how the state object actually works, LOL! But in my high state I'm pretty sure htis will work !
   } else {
-   state = setState(x+1);
+   state = setState(state.x+1);
   }
 }
 
