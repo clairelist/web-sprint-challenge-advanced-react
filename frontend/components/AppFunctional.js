@@ -13,42 +13,66 @@ let initialState = {
 }
 
 //increments:: state changers !
-const incrementX = function(state){ //each time this is called, logic goes 'hey,
-                                      //if x is 3, return our state, else increment x by 1'
-  if(state[x]===3){
-    return state; //will ahve to review how the state object actually works, LOL! But in my high state I'm pretty sure htis will work !
-  } else {
-   state = setState(state.x+1);
-  }
+
+
+
+
+//decrements !
+
+
+
+
+//click handlers ! Calling the above actions, which are currently above as normal funcs!
+
+
+
+export default function AppFunctional(props) {
+  const [state,setState] = useState(initialState);
+
+  //as always, LOGIC section!
+
+  //// INCREMENT FUNCTIONS
+  const incrementX = function(){ //each time this is called, logic goes 'hey,
+    //if x is 3, return our state, else increment x by 1'
+  let {x,y} = state; //destructure this x from state ! even though we are not doing anything with the y here, we still need it to set state properly, below
+  if(x===3){
+    return state;
+} else {
+    setState([...state, x+1]); //spread the rest of state our and set the x to +1
+}
 }
 
-const incrementY = function(state,y){
+const incrementY = function(){
+  let {x,y} = state; //this time, destructure the y !
   if(y===3){
     return state;
   } else {
-   state = setState(y+1);
+    setState([...state, y+1]);
   }
 }
 
-//decrements !
-const decrementX = function(state,x){
+//// DECREMENT FUNCTIONS
+
+const decrementX = function(){
+  let {x,y} = state;
   if(x===1){
     return state;
   } else {
-    state = setState(x-1);
+    setState([...state, x-1]);
   }
 }
 
-const decrementY = function(state,y){
+const decrementY = function(){
+  let {x,y} = state;
   if(y===1){
     return state;
   } else {
-    state = setState(y-1);
+    setState([...state, y-1]);
   }
 }
 
-//click handlers ! Calling the above actions, which are currently above as normal funcs!
-const clickUp = function(event){
+ //////// CLICKY CLICKY CLICK HANDLERS !
+ const clickUp = function(event){
   event.preventDefault();
   incrementY();
 }
@@ -68,8 +92,8 @@ const clickLeft = function(event){
   decrementX();
 }
 
+// TODO FOR TIRED CLAIRE:: CONNECT CLICK HANDLERS, PASS IN STATE VAR WHERE 'COORDINATES' ARE CURRENTLY HARDCODED
 
-export default function AppFunctional(props) {
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
