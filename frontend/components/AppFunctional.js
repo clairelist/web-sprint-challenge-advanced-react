@@ -2,54 +2,54 @@
 import React, {useState} from 'react';
 
 
-let initialState = {
-  x : 2,
-  y : 2
-};
-
 export default function AppFunctional(props) {
-  const [state,setState] = useState(initialState);
+ // const [state,setState] = useState(initialState);
+
+ const [x,setx] = useState(2);
+ const [y,sety] = useState(2);
 
   //as always, LOGIC section!
 
   //// INCREMENT FUNCTIONS
   const incrementX = function(){ //each time this is called, logic goes 'hey,
     //if x is 3, return our state, else increment x by 1'
-  let {x,y} = state; //destructure this x from state ! even though we are not doing anything with the y here, we still need it to set state properly, below
-  if(x===3){
-    return state;
+  let incr = x;
+  if(incr===3){
+    return incr;
 } else {
-    setState(x+1); //spread the rest of state our and set the x to +1
+    setx(incr+1); //this way, we are not directly changine the value of x !
 }
 }
 
 const incrementY = function(){
-  let {x,y} = state; //this time, destructure the y !
-  if(y===3){
-    return state;
+  let incr = y;
+  if(incr===3){
+    return incr;
   } else {
-    setState(y+1);
+    sety(incr+1);
+    console.log(incr)
   }
 }
 
 //// DECREMENT FUNCTIONS
 
 const decrementX = function(){
-  let {x,y} = state;
-  if(x===1){
-    return state;
+  // let {x,y} = state;
+  let decr = x;
+  if(decr===1){
+    return decr;
   } else {
-   setState(state, state['x']-1); //currently not mutating, but also not changing the value...
-   console.log(state);
+   setx(decr-1); 
+   console.log(x);
   }
 }
 
 const decrementY = function(){
-  let {x,y} = state;
-  if(y===1){
-    return state;
+  let decr = y;
+  if(decr===1){
+    return decr;
   } else {
-    setState([...state, y-1]);
+    sety(decr-1);
   }
 }
 
@@ -83,15 +83,15 @@ const clickLeft = function(event){
         <h3 id="steps">You moved 0 times</h3>
       </div>
       <div id="grid">
-        <div className="square"></div> 
-        <div className="square"></div> 
-        <div className="square"></div> 
-        <div className="square">{state.x === 1 && state.y === 2 ? 'B' : ''}</div> 
-        <div className="square">{state.x === 2 && state.y === 2 ? 'B' : ''}</div>
-        <div className="square"></div> 
-        <div className="square"></div> 
-        <div className="square"></div> 
-        <div className="square"></div> 
+        <div className="square">{x === 1 && y === 3 ? 'B' : ''}</div> 
+        <div className="square">{x === 2 && y === 3 ? 'B' : ''}</div> 
+        <div className="square">{x === 3 && y === 3 ? 'B' : ''}</div> 
+        <div className="square">{x === 1 && y === 2 ? 'B' : ''}</div> 
+        <div className="square">{x === 2 && y === 2 ? 'B' : ''}</div>
+        <div className="square">{x === 3 && y === 2 ? 'B' : ''}</div> 
+        <div className="square">{x === 1 && y === 1 ? 'B' : ''}</div> 
+        <div className="square">{x === 2 && y === 1 ? 'B' : ''}</div> 
+        <div className="square">{x === 3 && y === 1 ? 'B' : ''}</div> 
       </div>
       <div className="info">
         <h3 id="message"></h3>
