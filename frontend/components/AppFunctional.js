@@ -1,30 +1,11 @@
 /*eslint-disable*/
 import React, {useState} from 'react';
- 
-//okay so for this first attempt at the logic, let's think about it as incrementing each value
-//and then destructuring that array to correspond with which square gets the big ole B rendered to it
 
-//these will not be moved to an actions file, because this is for students who have not learned that part
-//of react yet !
 
 let initialState = {
-  x: 2,
-  y: 2
-}
-
-//increments:: state changers !
-
-
-
-
-//decrements !
-
-
-
-
-//click handlers ! Calling the above actions, which are currently above as normal funcs!
-
-
+  x : 2,
+  y : 2
+};
 
 export default function AppFunctional(props) {
   const [state,setState] = useState(initialState);
@@ -38,7 +19,7 @@ export default function AppFunctional(props) {
   if(x===3){
     return state;
 } else {
-    setState([...state, x+1]); //spread the rest of state our and set the x to +1
+    setState(x+1); //spread the rest of state our and set the x to +1
 }
 }
 
@@ -47,7 +28,7 @@ const incrementY = function(){
   if(y===3){
     return state;
   } else {
-    setState([...state, y+1]);
+    setState(y+1);
   }
 }
 
@@ -58,7 +39,8 @@ const decrementX = function(){
   if(x===1){
     return state;
   } else {
-    setState([...state, x-1]);
+   setState(state, state['x']-1); //currently not mutating, but also not changing the value...
+   console.log(state);
   }
 }
 
@@ -101,21 +83,21 @@ const clickLeft = function(event){
         <h3 id="steps">You moved 0 times</h3>
       </div>
       <div id="grid">
-        <div className="square"></div>
-        <div className="square"></div>
-        <div className="square"></div>
-        <div className="square"></div>
-        <div className="square">B</div>
-        <div className="square"></div>
-        <div className="square"></div>
-        <div className="square"></div>
-        <div className="square"></div>
+        <div className="square"></div> 
+        <div className="square"></div> 
+        <div className="square"></div> 
+        <div className="square">{state.x === 1 && state.y === 2 ? 'B' : ''}</div> 
+        <div className="square">{state.x === 2 && state.y === 2 ? 'B' : ''}</div>
+        <div className="square"></div> 
+        <div className="square"></div> 
+        <div className="square"></div> 
+        <div className="square"></div> 
       </div>
       <div className="info">
         <h3 id="message"></h3>
       </div>
       <div id="keypad">
-        <button id="left">LEFT</button>
+        <button id="left" onClick={clickLeft}>LEFT</button>
         <button id="up">UP</button>
         <button id="right">RIGHT</button>
         <button id="down">DOWN</button>
