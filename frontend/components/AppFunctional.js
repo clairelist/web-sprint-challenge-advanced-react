@@ -1,44 +1,43 @@
 import React, {useState} from 'react';
 
-let x = 2
-let y = 2
-const initialCoords = {x,y};
+
 
 //okay so for this first attempt at the logic, let's think about it as incrementing each value
 //and then destructuring that array to correspond with which square gets the big ole B rendered to it
 
 //these will be moved to an actions file when ready !
 //increments:: state changers !
-const incrementX = function(state,x){
-  if(x<=3){
-    state = setState(x+1)
+const incrementX = function(state,x){ //each time this is called, logic goes 'hey,
+                                      //if x is 3, return our state, else increment x by 1'
+  if(x===3){
+    return state;
   } else {
-   state = setState(x);
+   state = setState(x+1);
   }
 }
 
 const incrementY = function(state,y){
-  if(y<=3){
-    state = setState(y+1)
+  if(y===3){
+    return state;
   } else {
-   state = setState(y);
+   state = setState(y+1);
   }
 }
 
 //decrements !
 const decrementX = function(state,x){
-  if(x>=1){
-    state = setState(x-1);
+  if(x===1){
+    return state;
   } else {
-    state = setState(x);
+    state = setState(x-1);
   }
 }
 
 const decrementY = function(state,y){
-  if(y>=1){
-    state = setState(y-1);
+  if(y===1){
+    return state;
   } else {
-    state = setState(y);
+    state = setState(y-1);
   }
 }
 
@@ -48,10 +47,21 @@ const clickUp = function(event){
   incrementY();
 }
 
+const clickDown = function(event){
+  event.preventDefault();
+  decrementY();
+}
+
 const clickRight = function(event){
   event.preventDefault();
   incrementX();
 }
+
+const clickLeft = function(event){
+  event.preventDefault();
+  decrementX();
+}
+
 
 export default function AppFunctional(props) {
   return (
