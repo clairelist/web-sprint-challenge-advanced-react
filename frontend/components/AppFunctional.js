@@ -1,11 +1,12 @@
+/*eslint-disable*/
 import React, {useState} from 'react';
-
-
-
+ 
 //okay so for this first attempt at the logic, let's think about it as incrementing each value
 //and then destructuring that array to correspond with which square gets the big ole B rendered to it
 
-//these will be moved to an actions file when ready !
+//these will not be moved to an actions file, because this is for students who have not learned that part
+//of react yet !
+
 //increments:: state changers !
 const incrementX = function(state,x){ //each time this is called, logic goes 'hey,
                                       //if x is 3, return our state, else increment x by 1'
