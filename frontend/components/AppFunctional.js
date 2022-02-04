@@ -98,9 +98,9 @@ const clickLeft = function(event){
       </div>
       <div id="keypad">
         <button id="left" onClick={clickLeft}>LEFT</button>
-        <button id="up">UP</button>
-        <button id="right">RIGHT</button>
-        <button id="down">DOWN</button>
+        <button id="up" onClick={clickUp}>UP</button>
+        <button id="right" onClick={clickRight}>RIGHT</button>
+        <button id="down" onClick={clickDown}>DOWN</button>
         <button id="reset">reset</button>
       </div>
       <form>
