@@ -74,12 +74,10 @@ const clickLeft = function(event){
   decrementX();
 }
 
-// TODO FOR TIRED CLAIRE:: CONNECT CLICK HANDLERS, PASS IN STATE VAR WHERE 'COORDINATES' ARE CURRENTLY HARDCODED
-
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
-        <h3 id="coordinates">Coordinates (2, 2)</h3>
+        <h3 id="coordinates">{`Coordinates (${x}, ${y})`}</h3>
         <h3 id="steps">You moved 0 times</h3>
       </div>
       <div id="grid">
