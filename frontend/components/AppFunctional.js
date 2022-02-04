@@ -7,6 +7,7 @@ export default function AppFunctional(props) {
 
  const [x,setx] = useState(2);
  const [y,sety] = useState(2);
+ const [count,setCount] = useState(0);
 
   //as always, LOGIC section!
 
@@ -56,29 +57,40 @@ const decrementY = function(){
  //////// CLICKY CLICKY CLICK HANDLERS !
  const clickUp = function(event){
   event.preventDefault();
+  setCount(count+1);
   incrementY();
 }
 
 const clickDown = function(event){
   event.preventDefault();
+  setCount(count+1);
   decrementY();
 }
 
 const clickRight = function(event){
   event.preventDefault();
+  setCount(count+1);
   incrementX();
 }
 
 const clickLeft = function(event){
   event.preventDefault();
+  setCount(count+1);
   decrementX();
+}
+
+const reset = function(event){
+  event.preventDefault();
+  setCount(0);
+  setx(2);
+  sety(2);
 }
 
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
         <h3 id="coordinates">{`Coordinates (${x}, ${y})`}</h3>
-        <h3 id="steps">You moved 0 times</h3>
+        <h3 id="steps">You moved {count} times</h3>
       </div>
       <div id="grid">
         <div className="square">{x === 1 && y === 3 ? 'B' : ''}</div> 
@@ -99,7 +111,7 @@ const clickLeft = function(event){
         <button id="up" onClick={clickUp}>UP</button>
         <button id="right" onClick={clickRight}>RIGHT</button>
         <button id="down" onClick={clickDown}>DOWN</button>
-        <button id="reset">reset</button>
+        <button id="reset" onClick={reset}>reset</button>
       </div>
       <form>
         <input id="email" type="email" placeholder="type email"></input>
